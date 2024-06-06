@@ -1,0 +1,45 @@
+@media screen and (max-width: 1400px) {
+
+}
+
+@media screen and (max-width: 1200px) {
+    .title-section .inner{
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    h2{
+        font-size: 32px;
+    }
+    h3{
+        font-size: 26px;
+    }
+    h4{
+        font-size: 20px;
+    }
+    p{
+        font-size: 18px;
+    }
+    .title-section{
+        display: flex;
+        justify-content: center;
+    }
+    .title-section .star-position img{
+        width: calc(55px + 6vw);
+        height: calc(55px + 6vw);
+    }
+}
+
+@media screen and (max-width: 720px) {
+    h1{
+        font-size: calc(12px + 6vw);
+    }
+    nav .links{
+        display: none;
+    }
+    .menu-icon{
+        display: block;
+    }
+}

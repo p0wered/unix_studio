@@ -1,13 +1,226 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+/**
+@license
+
+Font Family: Hubot Sans
+© 2022, GitHub https://github.com/github/hubot-sans
+with Reserved Font Name "Hubot Sans"
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+@license
+
+Font Family: Panchang
+Designed by: Barbara Bigosinska, Hitesh Malaviya
+URL: https://www.fontshare.com/fonts/panchang
+© 2024 Indian Type Foundry
+**/
+
+/* Main Properties */
+
+:root{
+  --bg-dark: #1a1a1a;
+  --bg-light: #ffffff;
+  --primary: #c8ea21;
+  --border-dark: #2f2f2f;
+  --border-light: #d0d0d0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::selection {
+  background: black;
+  color: white;
 }
+
+::-moz-selection {
+  background: black;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  font-family: 'Panchang Variable', sans-serif;
+  font-weight: 600;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: var(--bg-light);
+  background-color: var(--bg-dark);
+}
+
+p, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+p{
+  font-size: 24px;
+}
+
+h1{
+  font-size: calc(52px + 3vw);
+  line-height: 1;
+}
+
+h2{
+  font-size: 64px;
+  line-height: 1;
+}
+
+h3{
+  font-size: 44px;
+  line-height: 1;
+}
+
+h4{
+  font-size: 32px;
+}
+
+a, a:visited{
+  text-decoration: none;
+  color: inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+/* Templates */
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.separator{
+  height: 1px;
+  background-color: var(--border-light);
+  margin: 0 6vw;
+}
+
+/* Navbar */
+
+nav{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 1.325rem 6vw;
+  overflow: hidden;
+  width: 100%;
+  z-index: 999;
+}
+
+nav .links{
+  display: flex;
+  gap: 1rem;
+  font-size: 18px;
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 400;
+}
+
+nav .links a{
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+}
+
+nav .links a:after {
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  content: "";
+  left: 50%;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+nav .links a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.menu-icon{
+  display: none;
+  border: 1px solid var(--border-dark);
+  width: 46px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+/* Home Page */
+
+.title-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 8vh 6vw;
+  overflow: hidden;
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.title-section .inner{
+  margin-top: 12vh;
+  display: flex;
+  gap: 2vw;
+  width: min-content;
+}
+
+.title-section .star-position{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.title-section .star-position img{
+  width: 140px;
+  height: 140px;
+}
+
+.title-section .lower-text{
+  max-width: 580px;
+  color: var(--bg-dark);
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 400;
+}
+
