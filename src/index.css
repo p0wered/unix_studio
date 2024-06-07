@@ -64,25 +64,30 @@ p, h1, h2, h3, h4 {
 
 p{
   font-size: 24px;
+  user-select: none;
 }
 
 h1{
-  font-size: calc(52px + 3vw);
+  font-size: calc(44px + 3.4vw);
+  user-select: none;
   line-height: 1;
 }
 
 h2{
   font-size: 64px;
+  user-select: none;
   line-height: 1;
 }
 
 h3{
   font-size: 44px;
+  user-select: none;
   line-height: 1;
 }
 
 h4{
   font-size: 32px;
+  user-select: none;
 }
 
 a, a:visited{
@@ -155,16 +160,22 @@ nav .links{
   font-weight: 400;
 }
 
+nav .logo{
+  font-size: 24px;
+  text-transform: uppercase;
+  position: relative;
+}
+
 nav .links a{
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
 }
 
-nav .links a:after {
+nav a:after, .logo:after {
   display: block;
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   width: 0;
   height: 2px;
   content: "";
@@ -173,7 +184,7 @@ nav .links a:after {
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
-nav .links a:hover:after {
+nav a:hover:after, .logo:hover:after {
   width: 100%;
   left: 0;
 }
@@ -193,7 +204,7 @@ nav .links a:hover:after {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  padding: 8vh 6vw;
+  padding: 6vh 6vw;
   overflow: hidden;
   background-position: center bottom;
   background-size: cover;
@@ -213,8 +224,8 @@ nav .links a:hover:after {
 }
 
 .title-section .star-position img{
-  width: 140px;
-  height: 140px;
+  width: 128px;
+  height: 128px;
 }
 
 .title-section .lower-text{
@@ -224,3 +235,22 @@ nav .links a:hover:after {
   font-weight: 400;
 }
 
+.animated-text-box{
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+  transform-style: preserve-3d;
+}
+
+.get-in-touch{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.get-in-touch img{
+  width: 160px;
+  height: 160px;
+}

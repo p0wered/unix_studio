@@ -3,10 +3,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .title-section .inner{
-        flex-direction: column;
-        gap: 0;
-    }
+
 }
 
 @media screen and (max-width: 992px) {
@@ -24,11 +21,23 @@
     }
     .title-section{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
     }
     .title-section .star-position img{
         width: calc(55px + 6vw);
         height: calc(55px + 6vw);
+    }
+    .get-in-touch{
+        flex-direction: column-reverse;
+    }
+    .get-in-touch img{
+        width: 120px;
+        height: 120px;
+    }
+    .title-section .inner{
+        flex-direction: column;
+        gap: 0;
     }
 }
 
