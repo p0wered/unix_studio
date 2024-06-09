@@ -14,7 +14,7 @@ function NavBar(){
         <div>
             <NavLink className='logo' to='/'>UNIXSTUDIO</NavLink>
         </div>
-        <div className='links'>
+        <div className='links change-font'>
             <NavLink to='/cases'>CASES</NavLink>
             <NavLink to='/services'>SERVICES</NavLink>
             <NavLink to='/about'>ABOUT</NavLink>

@@ -18,4 +18,6 @@
 * ### `npm install`
 * ### `npm start`
 
-![img.png](preview.png)
+## Preview
+
+![img.png](img.png)

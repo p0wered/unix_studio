@@ -3,18 +3,30 @@
 }
 
 @media screen and (max-width: 1200px) {
-
+    .flex-row-to-column{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .container{
+        padding: 6vh 6vw;
+    }
+    .separator{
+        margin: 0 6vw;
+    }
 }
 
 @media screen and (max-width: 992px) {
+    a{
+        font-size: 18px;
+    }
     h2{
         font-size: 32px;
     }
     h3{
-        font-size: 26px;
+        font-size: 20px;
     }
     h4{
-        font-size: 20px;
+        font-size: 18px;
     }
     p{
         font-size: 18px;
@@ -39,6 +51,14 @@
         flex-direction: column;
         gap: 0;
     }
+    .to-about-section .merger{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .services-list .item img{
+        width: 40px;
+        height: 40px;
+    }
 }
 
 @media screen and (max-width: 720px) {
@@ -50,5 +70,9 @@
     }
     .menu-icon{
         display: block;
+    }
+    .to-about-section{
+        background-position: right;
+        background-size: 200%;
     }
 }

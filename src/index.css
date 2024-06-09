@@ -10,6 +10,19 @@ This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
 http://scripts.sil.org/OFL
 
+**/
+
+@font-face {
+  font-family: 'Hubot Sans';
+  src: url('fonts/HubotSans.ttf') format('ttf'),
+  url('fonts/HubotSans.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+/**
+
 @license
 
 Font Family: Panchang
@@ -17,6 +30,16 @@ Designed by: Barbara Bigosinska, Hitesh Malaviya
 URL: https://www.fontshare.com/fonts/panchang
 © 2024 Indian Type Foundry
 **/
+
+@font-face {
+  font-family: 'Panchang-Variable';
+  src: url('fonts/Panchang-Variable.woff2') format('woff2'),
+  url('fonts/Panchang-Variable.woff') format('woff'),
+  url('fonts/Panchang-Variable.ttf') format('truetype');
+  font-weight: 200 800;
+  font-display: swap;
+  font-style: normal;
+}
 
 /* Main Properties */
 
@@ -45,7 +68,7 @@ URL: https://www.fontshare.com/fonts/panchang
 html {
   height: 100%;
   scroll-behavior: smooth;
-  font-family: 'Panchang Variable', sans-serif;
+  font-family: 'Panchang-Variable', sans-serif;
   font-weight: 600;
 }
 
@@ -53,8 +76,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  color: var(--bg-light);
-  background-color: var(--bg-dark);
+  color: var(--bg-dark);
+  background-color: var(--bg-light);
 }
 
 p, h1, h2, h3, h4 {
@@ -64,33 +87,35 @@ p, h1, h2, h3, h4 {
 
 p{
   font-size: 24px;
-  user-select: none;
+  cursor: default;
 }
 
 h1{
   font-size: calc(44px + 3.4vw);
-  user-select: none;
+  cursor: default;
   line-height: 1;
 }
 
 h2{
   font-size: 64px;
-  user-select: none;
+  cursor: default;
   line-height: 1;
 }
 
 h3{
-  font-size: 44px;
-  user-select: none;
+  font-size: 48px;
+  cursor: default;
   line-height: 1;
 }
 
 h4{
   font-size: 32px;
-  user-select: none;
+  font-weight: 600;
+  cursor: default;
 }
 
 a, a:visited{
+  font-size: 24px;
   text-decoration: none;
   color: inherit;
 }
@@ -115,6 +140,10 @@ textarea:focus, input:focus{
 
 /* Templates */
 
+.container{
+  padding: 6vh 12vw;
+}
+
 .flex-column{
   display: flex;
   flex-direction: column;
@@ -131,10 +160,20 @@ textarea:focus, input:focus{
   justify-content: center;
 }
 
+.flex-row-to-column{
+  display: flex;
+  flex-direction: row;
+}
+
 .separator{
   height: 1px;
   background-color: var(--border-light);
-  margin: 0 6vw;
+  margin: 0 12vw;
+}
+
+.change-font{
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 400;
 }
 
 /* Navbar */
@@ -144,6 +183,7 @@ nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--bg-light);
   background-color: var(--bg-dark);
   border-bottom: 1px solid var(--border-dark);
   padding: 1.325rem 6vw;
@@ -155,18 +195,16 @@ nav{
 nav .links{
   display: flex;
   gap: 1rem;
-  font-size: 18px;
-  font-family: 'Hubot Sans', sans-serif;
-  font-weight: 400;
 }
 
 nav .logo{
-  font-size: 24px;
+  font-size: calc(18px + 0.1vw);
   text-transform: uppercase;
   position: relative;
 }
 
 nav .links a{
+  font-size: 18px;
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
@@ -197,16 +235,17 @@ nav a:hover:after, .logo:hover:after {
   border-radius: 50%;
 }
 
-/* Home Page */
+/* Title Section */
 
 .title-section{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  padding: 6vh 6vw;
   overflow: hidden;
-  background-position: center bottom;
+  color: var(--bg-light);
+  background-color: var(--bg-dark);
+  background-position: center 95%;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -214,7 +253,7 @@ nav a:hover:after, .logo:hover:after {
 .title-section .inner{
   margin-top: 12vh;
   display: flex;
-  gap: 2vw;
+  gap: 12px;
   width: min-content;
 }
 
@@ -231,8 +270,6 @@ nav a:hover:after, .logo:hover:after {
 .title-section .lower-text{
   max-width: 580px;
   color: var(--bg-dark);
-  font-family: 'Hubot Sans', sans-serif;
-  font-weight: 400;
 }
 
 .animated-text-box{
@@ -253,4 +290,142 @@ nav a:hover:after, .logo:hover:after {
 .get-in-touch img{
   width: 160px;
   height: 160px;
+}
+
+/* Home Page */
+
+.to-about-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 20%;
+  background-color: var(--bg-light);
+  color: var(--bg-dark);
+  overflow: hidden;
+}
+
+.to-about-section .merger{
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.to-about-section a{
+  text-decoration: none;
+  position: relative;
+}
+
+.to-about-section a:after{
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  content: "";
+  left: 50%;
+  background: var(--bg-dark);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.to-about-section a:hover:after{
+  width: 100%;
+  left: 0;
+}
+
+.home-services{
+  overflow: hidden;
+}
+
+.services-list .item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 3vh 0;
+  border-bottom: 1px solid var(--border-light);
+  text-transform: uppercase;
+}
+
+.services-list .item h3{
+  cursor: pointer;
+}
+
+.services-list img{
+  transition: .3s;
+}
+
+.services-list .item > .item-title{
+  transition: .3s;
+}
+
+.services-list .item:hover > .item-title{
+  transform: translateX(8px);
+}
+
+.services-list .item:hover > img{
+  rotate: 45deg;
+}
+
+.home-cases{
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  overflow: hidden;
+}
+
+.home-cases .image{
+  height: 650px;
+  border-radius: 20px;
+}
+
+.case-1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.case-1 a{
+  text-align: end;
+  text-decoration: none;
+  position: relative;
+}
+
+.case-1 a:after{
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  content: "";
+  left: 50%;
+  background: var(--bg-dark);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.case-1 a:hover:after{
+  width: 100%;
+  left: 0;
+}
+
+.home-cases-slider{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0;
+  background-color: var(--bg-dark);
+}
+
+.home-slider .item{
+  border-radius: 20px;
+  background-color: #d0d0d0;
+  width: 560px;
+  height: 460px;
 }
