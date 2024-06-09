@@ -7,19 +7,20 @@ import AboutPage from "./routes/about-page";
 import NewsPage from "./routes/news-page";
 import CasePage from "./routes/case-page";
 import {motion} from "framer-motion";
+import AnimatedCursor from "react-animated-cursor"
 
 function NavBar(){
   return(
     <motion.nav initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1, type: 'spring'}}>
         <div>
-            <NavLink className='logo' to='/'>UNIXSTUDIO</NavLink>
+            <NavLink className='logo primary-link' to='/'>UNIXSTUDIO</NavLink>
         </div>
         <div className='links change-font'>
-            <NavLink to='/cases'>CASES</NavLink>
-            <NavLink to='/services'>SERVICES</NavLink>
-            <NavLink to='/about'>ABOUT</NavLink>
-            <NavLink to='/contact'>CONTACT</NavLink>
-            <NavLink to='/news'>NEWS</NavLink>
+            <NavLink className='primary-link' to='/cases'>CASES</NavLink>
+            <NavLink className='primary-link' to='/services'>SERVICES</NavLink>
+            <NavLink className='primary-link' to='/about'>ABOUT</NavLink>
+            <NavLink className='primary-link' to='/contact'>CONTACT</NavLink>
+            <NavLink className='primary-link' to='/news'>NEWS</NavLink>
         </div>
         <div className='menu-icon'></div>
     </motion.nav>
@@ -29,6 +30,20 @@ function NavBar(){
 function App() {
   return (
       <BrowserRouter>
+        <AnimatedCursor
+          innerSize={8}
+          outerSize={24}
+          innerScale={1.5}
+          outerScale={2}
+          outerAlpha={1}
+          innerStyle={{
+              backgroundColor: 'var(--cursor-color)'
+          }}
+          outerStyle={{
+              backgroundColor: 'var(--cursor-color)',
+              mixBlendMode: 'exclusion'
+          }}
+        />
         <NavBar/>
         <Routes>
           <Route path='/' element={<HomePage/>}/>

@@ -4,7 +4,7 @@
 
 **Type:** Landing Page \
 **Subject:** Digital Agency \
-**Version:** 0.3.1 \
+**Version:** 0.3.9 \
 **Fonts**: Panchang, Hubot Sans \
 **Color Palette**:\
 ![#1a1a1a](https://placehold.co/15x15/1a1a1a/1a1a1a.png) `#1a1a1a`\
@@ -20,4 +20,4 @@
 
 ## Preview
 
-![img.png](img.png)
+![preview_v0.3.9.png](src/preview_v0.3.9.png)

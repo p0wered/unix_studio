@@ -10,8 +10,14 @@
     .container{
         padding: 6vh 6vw;
     }
+    .slider-wrap{
+        margin-left: 6vw;
+    }
     .separator{
         margin: 0 6vw;
+    }
+    nav{
+        padding: 1.325rem 6vw;
     }
 }
 
@@ -36,7 +42,7 @@
         justify-content: space-between;
         align-items: center;
     }
-    .title-section .star-position img{
+    .star-position img{
         width: calc(55px + 6vw);
         height: calc(55px + 6vw);
     }
@@ -59,6 +65,17 @@
         width: 40px;
         height: 40px;
     }
+    .h-item img{
+        width: 420px;
+    }
+    .slider-wrap{
+        max-height: 422px;
+    }
+    #review-1{
+        width: 30px;
+        height: 26px;
+    }
+
 }
 
 @media screen and (max-width: 720px) {
@@ -74,5 +91,21 @@
     .to-about-section{
         background-position: right;
         background-size: 200%;
+    }
+    .review-section .star-position{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 470px){
+    .slider-wrap{
+        margin-left: 8px;
+    }
+    .slick-slide{
+        margin-right: 8px
+    }
+    .h-item img{
+        width: 380px;
+        aspect-ratio: 1;
     }
 }
