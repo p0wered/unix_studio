@@ -18,7 +18,7 @@ const MotionHeading = ({ tag, children, ...props }) => {
 
 export function Separator(){
     const ref = useRef();
-    const inView = useInView(ref, { once: true });
+    const inView = useInView(ref, { once: false });
 
     return (
         <motion.div
@@ -33,7 +33,7 @@ export function Separator(){
 
 export function SeparatorWide(){
     const ref = useRef();
-    const inView = useInView(ref, { once: true });
+    const inView = useInView(ref, { once: false });
 
     return (
         <motion.div
@@ -47,11 +47,10 @@ export function SeparatorWide(){
     )
 }
 
-export function AnimatedHeading({text, inViewOn, onHoverOn, headingType}) {
+export function AnimatedHeading({text, inViewOn, headingType}) {
     const words = text.split(' ');
-    const translate = onHoverOn ? 12 : 0;
     const ref = useRef();
-    const inView = useInView(ref, { once: true });
+    const inView = useInView(ref, {once: false});
     const isInView = inViewOn ? inView : true;
     const wordVariants = {
         hidden: {y: '100%', opacity: 0},
@@ -60,7 +59,7 @@ export function AnimatedHeading({text, inViewOn, onHoverOn, headingType}) {
             opacity: 1,
             transition: {
                 duration: 0.7,
-                delay: i * 0.05,
+                delay: i * 0.1,
                 ease: [0.01, 0.97, 0.99, 1],
             },
         }),
@@ -75,11 +74,54 @@ export function AnimatedHeading({text, inViewOn, onHoverOn, headingType}) {
                         animate={isInView ? "visible" : "hidden"}
                         custom={index}
                         tag={headingType}
-                        whileHover={{translateX: translate}}
                         style={{display: 'inline-block', marginRight: 14}}
                     >
                         {word}
                     </MotionHeading>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+export function AnimatedHeadingWords({ text, inViewOn, headingType }) {
+    const words = text.split(' ');
+    const ref = useRef();
+    const inView = useInView(ref, { once: false });
+    const isInView = inViewOn ? inView : true;
+    let letterIndex = 0;
+
+    const letterVariants = {
+        hidden: { y: '100%', opacity: 0 },
+        visible: (i) => ({
+            y: '0%',
+            opacity: 1,
+            transition: {
+                duration: 0.5,
+                delay: i * 0.02,
+                ease: [0.01, 0.97, 0.99, 1],
+            },
+        }),
+    };
+
+    return (
+        <div ref={ref} style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {words.map((word, wordIndex) => (
+                <div key={wordIndex} className="word-container" style={{ display: 'flex', marginRight: '1.5em' }}>
+                    {word.split('').map((letter, index) => (
+                        <div key={`${wordIndex}-${index}`} className="letter-container">
+                            <MotionHeading
+                                variants={letterVariants}
+                                initial="hidden"
+                                animate={isInView ? 'visible' : 'hidden'}
+                                custom={letterIndex++} // Use this counter as the custom delay index
+                                tag={headingType}
+                                style={{ display: 'inline-block' }}
+                            >
+                                {letter}
+                            </MotionHeading>
+                        </div>
+                    ))}
                 </div>
             ))}
         </div>

@@ -75,7 +75,13 @@
         width: 30px;
         height: 26px;
     }
-
+    .star-dark{
+        width: 42px;
+        height: 42px;
+    }
+    .case-1 a{
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 720px) {
@@ -97,7 +103,7 @@
     }
 }
 
-@media screen and (max-width: 470px){
+@media screen and (max-width: 510px){
     .slider-wrap{
         margin-left: 8px;
     }

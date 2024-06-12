@@ -32,8 +32,8 @@ function App() {
       <BrowserRouter>
         <AnimatedCursor
           innerSize={8}
-          outerSize={24}
-          innerScale={1.5}
+          outerSize={34}
+          innerScale={1.1}
           outerScale={2}
           outerAlpha={1}
           innerStyle={{
@@ -45,14 +45,14 @@ function App() {
           }}
         />
         <NavBar/>
-        <Routes>
-          <Route path='/' element={<HomePage/>}/>
-          <Route path='/services' element={<ServicesPage/>}/>
-          <Route path='/contact' element={<ContactPage/>}/>
-          <Route path='/about' element={<AboutPage/>}/>
-          <Route path='/news' element={<NewsPage/>}/>
-          <Route path='/cases' element={<CasePage/>}/>
-        </Routes>
+          <Routes>
+              <Route path='/' element={<HomePage/>}/>
+              <Route path='/services' element={<ServicesPage/>}/>
+              <Route path='/contact' element={<ContactPage/>}/>
+              <Route path='/about' element={<AboutPage/>}/>
+              <Route path='/news' element={<NewsPage/>}/>
+              <Route path='/cases' element={<CasePage/>}/>
+          </Routes>
       </BrowserRouter>
   );
 }

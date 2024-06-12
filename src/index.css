@@ -44,8 +44,8 @@ URL: https://www.fontshare.com/fonts/panchang
 /* Main Properties */
 
 :root{
-  --bg-dark: #1a1a1a;
-  --bg-light: #ffffff;
+  --content-dark: #1a1a1a;
+  --content-light: #ffffff;
   --primary: #c8ea21;
   --border-dark: #2f2f2f;
   --border-light: #d0d0d0;
@@ -77,8 +77,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  color: var(--bg-dark);
-  background-color: var(--bg-light);
+  color: var(--content-dark);
+  background-color: var(--content-light);
 }
 
 p, h1, h2, h3, h4 {
@@ -140,6 +140,15 @@ textarea:focus, input:focus{
   padding: 6vh 12vw;
 }
 
+.scroll-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+
 .flex-column{
   display: flex;
   flex-direction: column;
@@ -174,8 +183,8 @@ nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--bg-light);
-  background-color: var(--bg-dark);
+  color: var(--content-light);
+  background-color: var(--content-dark);
   border-bottom: 1px solid var(--border-dark);
   padding: 1.325rem 12vw;
   overflow: hidden;
@@ -208,7 +217,7 @@ nav .logo{
   height: 2px;
   content: "";
   left: 50%;
-  background: var(--bg-light);
+  background: var(--content-light);
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
@@ -233,8 +242,8 @@ nav .logo{
   justify-content: space-between;
   height: 100vh;
   overflow: hidden;
-  color: var(--bg-light);
-  background-color: var(--bg-dark);
+  color: var(--content-light);
+  background-color: var(--content-dark);
   background-position: center 95%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -259,7 +268,7 @@ nav .logo{
 
 .title-section .lower-text{
   max-width: 580px;
-  color: var(--bg-dark);
+  color: var(--content-dark);
 }
 
 .animated-text-box{
@@ -289,8 +298,8 @@ nav .logo{
   flex-direction: column;
   justify-content: space-between;
   height: 80vh;
-  background-color: var(--bg-light);
-  color: var(--bg-dark);
+  background-color: var(--content-light);
+  color: var(--content-dark);
   overflow: hidden;
 }
 
@@ -306,7 +315,7 @@ nav .logo{
 }
 
 .to-about-section a:after{
-  background-color: var(--bg-dark);
+  background-color: var(--content-dark);
 }
 
 .home-services{
@@ -335,7 +344,7 @@ nav .logo{
 }
 
 .services-list .item:hover > .item-title{
-  transform: translateX(8px);
+  transform: translateX(12px);
 }
 
 .home-cases{
@@ -360,7 +369,9 @@ nav .logo{
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .case-1 a{
@@ -368,7 +379,7 @@ nav .logo{
 }
 
 .case-1 a:after{
-  background: var(--bg-dark);
+  background: var(--content-dark);
 }
 
 .home-cases-slider{
@@ -377,7 +388,7 @@ nav .logo{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0;
-  background-color: var(--bg-dark);
+  background-color: var(--content-dark);
   overflow: hidden;
 }
 
@@ -389,7 +400,7 @@ nav .logo{
 .h-item{
   background-size: cover;
   background-position: center;
-  color: var(--bg-light);
+  color: var(--content-light);
 }
 
 .h-item .merger{
@@ -420,16 +431,13 @@ nav .logo{
 }
 
 .review-wrap{
-  background-color: var(--bg-dark);
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  gap: 12vh;
+  background-color: var(--content-dark);
+  gap: 4vh;
   padding-top: 6rem;
 }
 
 .review-section{
-  color: var(--bg-light);
+  color: var(--content-light);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -444,6 +452,7 @@ nav .logo{
 }
 
 .review-footer{
+  color: var(--content-light);
   width: 100%;
   display: flex;
   text-align: center;
@@ -459,7 +468,7 @@ nav .logo{
 }
 
 .review-footer a:after{
-  background-color: var(--bg-dark);
+  background-color: var(--content-light);
 }
 
 .progress {
@@ -490,4 +499,15 @@ nav .logo{
 .parallax span {
   display: block;
   margin-right: 30px;
+}
+
+.star-dark{
+  width: 72px;
+  height: 72px;
+}
+
+.stats-section{
+  background-color: var(--content-dark);
+  color: var(--content-light);
+  overflow: hidden;
 }

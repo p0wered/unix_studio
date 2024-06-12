@@ -3,7 +3,6 @@ import StarDarkImg from '../assets/star_dark.png';
 import GetInTouchImg from '../assets/get-in-touch.png';
 import BackgroundImg from '../assets/graphic.png';
 import BackImgLower from '../assets/graphic_lower.png';
-import BackImgLower2 from '../assets/graphic_lower_2.png';
 import ArrowButton from '../assets/arrow_button.svg';
 import HomeCases1 from '../assets/haven.png';
 import HomeCases2 from '../assets/case_2.png';
@@ -16,10 +15,10 @@ import Vector1 from '../assets/vector.svg';
 import Slider from "react-slick";
 import ReviewSvg from '../assets/review.svg';
 import ReviewImg from '../assets/mask-review.jpg';
-import {AnimatedHeading, ParallaxText, Separator, SeparatorWide} from "../animations";
+import {AnimatedHeading, AnimatedHeadingWords, ParallaxText, Separator, SeparatorWide} from "../animations";
 import {
     motion,
-    useInView,
+    useInView, useScroll,
     useTime,
     useTransform,
 } from "framer-motion";
@@ -31,71 +30,69 @@ function TitleSection({title, desc, lowerText}) {
     const time = useTime();
     const rotate = useTransform(time, [0, 12000], [0, 360], {clamp: false});
     return (
-        <div className='title-section container' style={{backgroundImage: `url(${BackgroundImg})`}}>
-            <div className='inner'>
-                <AnimatedHeading
-                    text={title}
-                    inViewOn={false}
-                    onHoverOn={true}
-                    headingType='h1'
-                />
-                <p>{desc}</p>
-                <div className='star-position'>
-                    <motion.img
-                        initial={{scale: 0}}
-                        animate={{rotate: 90, scale: 1}}
-                        transition={{duration: 1, type: 'spring'}}
-                        whileHover={{rotate: -45}}
-                        src={StarImg}
-                        draggable={false}/>
-                </div>
-            </div>
-            <div className='get-in-touch'>
-                <motion.p className='lower-text change-font'
-                          transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
-                          initial={{y: '200%', opacity: 0}}
-                          animate={{y: 0, opacity: 1}}
-                >
-
-                    {lowerText}
-                </motion.p>
-                <div>
-                    <Link to='/contact'>
+        <div>
+            <div className='title-section container' style={{backgroundImage: `url(${BackgroundImg})`}}>
+                <div className='inner'>
+                    <AnimatedHeadingWords
+                        text={title}
+                        inViewOn={false}
+                        headingType='h1'
+                    />
+                    <p>{desc}</p>
+                    <div className='star-position'>
                         <motion.img
-                            style={{rotate}}
-                            transition={{duration: 0.7}}
-                            initial={{opacity: 0}}
-                            animate={{opacity: 1}}
-                            src={GetInTouchImg}
-                            whileHover={{scale: 1.1}}
-                        />
-                    </Link>
+                            initial={{scale: 0}}
+                            animate={{rotate: 90, scale: 1}}
+                            transition={{duration: 1, type: 'spring'}}
+                            src={StarImg}
+                            draggable={false}/>
+                    </div>
+                </div>
+                <div className='get-in-touch'>
+                    <motion.p className='lower-text change-font'
+                              transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                              initial={{y: '200%', opacity: 0}}
+                              animate={{y: 0, opacity: 1}}
+                    >
+
+                        {lowerText}
+                    </motion.p>
+                    <div>
+                        <Link to='/contact'>
+                            <motion.img
+                                style={{rotate}}
+                                transition={{duration: 0.7}}
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                src={GetInTouchImg}
+                                whileHover={{scale: 1.1}}
+                            />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
 
-function ToAboutSection(){
+function ToAboutSection() {
     const ref = useRef();
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref, {once: false});
 
     return (
         <div>
             <Separator/>
-            <img src={Vector1} id='vector1'/>
+            <img src={Vector1} id='vector1' draggable={false}/>
             <div className='to-about-section container'>
                 <div className='flex-column' style={{maxWidth: '55rem', gap: '2rem'}}>
                     <AnimatedHeading
                         text='LET’S FIND YOUR DESIGN PRODUCT'
                         inViewOn={true}
-                        onHoverOn={false}
                         headingType='h2'
                     />
                     <AnimatedHeading
                         text='SAFE AND BENEFICIAL DESIGN FOR HUMANITY'
                         inViewOn={true}
-                        onHoverOn={false}
                         headingType='h4'
                     />
                 </div>
@@ -115,9 +112,9 @@ function ToAboutSection(){
     )
 }
 
-const ServiceItem = ({ title }) => {
+const ServiceItem = ({title}) => {
     const ref = useRef();
-    useInView(ref, { once: true });
+    useInView(ref, { once: false });
     return (
         <div>
             <Link to='/error' className='item'>
@@ -157,8 +154,8 @@ function HomeServices(){
 function HavenSection() {
     const ref = useRef();
     const ref2 = useRef();
-    const isInView = useInView(ref, {once: true});
-    const isInView2 = useInView(ref2, {once: true});
+    const isInView = useInView(ref, {once: false});
+    const isInView2 = useInView(ref2, {once: false});
 
     return (
         <ParallaxProvider>
@@ -177,7 +174,7 @@ function HavenSection() {
                 </motion.div>
                 <motion.div ref={ref2}
                             className='case-1'
-                            transition={{duration: 0.7, delay: 0.1}}
+                            transition={{duration: 0.4, delay: 0.1}}
                             initial={{opacity: 0}}
                             animate={isInView2 ? {opacity: 1} : {opacity: 0}}
                 >
@@ -231,12 +228,12 @@ function CasesSlider() {
         <div className="slider-container home-slider">
             <Slider {...settings}>
                 {
-                    titles.map((title, index) => (
-                        <div className='h-item'>
-                            <img src={images[index]}/>
+                    titles.map((title, i) => (
+                        <div className='h-item' key={title}>
+                            <img src={images[i]}/>
                             <div className='merger'>
                                 <a href='#' className='primary-link' style={{fontSize: 24}}>{title}</a>
-                                <p className='change-font'>{subjects[index]}</p>
+                                <p className='change-font'>{subjects[i]}</p>
                             </div>
                         </div>
                     ))
@@ -248,47 +245,63 @@ function CasesSlider() {
 
 function HomeCases() {
     const slider = useRef();
-    const sliderInView = useInView(slider, {once: true});
+    const sliderInView = useInView(slider, {once: false});
 
     return (
         <div className='home-cases-slider' style={{backgroundImage: `url(${BackImgLower})`}}>
-            <Separator/>
-            <div className='container'>
-                <AnimatedHeading text='WITNESS THE BEAUTY' inViewOn={true} headingType='h2'/>
-                <div style={{maxWidth: '55rem', marginTop: '2rem'}}>
-                    <AnimatedHeading
-                        text='SAFE AND BENEFICIAL DESIGN FOR HUMANITY'
-                        inViewOn={true}
-                        onHoverOn={false}
-                        headingType='h4'
-                    />
-                </div>
+            <div style={{padding: 'calc(36px + 5vw) 0'}}>
+                <ParallaxText baseVelocity={3}>
+                    <div className='flex-row' style={{alignItems: 'center', gap: '2rem'}}>
+                        <h2>UNIXSTUDIO</h2>
+                        <img className='star-dark' src={StarDarkImg} draggable={false}/>
+                    </div>
+                </ParallaxText>
+                <ParallaxText baseVelocity={-3}>
+                    <div className='flex-row' style={{alignItems: 'center', gap: '2rem', marginTop: 8}}>
+                        <h2>UNIXSTUDIO</h2>
+                        <img className='star-dark' src={StarDarkImg} draggable={false}/>
+                    </div>
+                </ParallaxText>
             </div>
-            <motion.div
-                className='slider-wrap'
-                ref={slider}
-                transition={{duration: 1, type: 'spring', ease: [0.01, 0.95, 0.98, 1]}}
-                initial={{opacity: 0, x: '100%'}}
-                animate={sliderInView ? {opacity: 1, x: '0'} : {opacity: 0, x: '100%'}}
-            >
-                <CasesSlider/>
-            </motion.div>
+            <div>
+                <div className='container' style={{color: 'var(--content-light)'}}>
+                    <AnimatedHeading text='WITNESS THE BEAUTY' inViewOn={true} headingType='h2'/>
+                    <div style={{maxWidth: '55rem', marginTop: '2rem'}}>
+                        <AnimatedHeading
+                            text='SAFE AND BENEFICIAL DESIGN FOR HUMANITY'
+                            inViewOn={true}
+                            headingType='h4'
+                        />
+                    </div>
+                </div>
+                <motion.div
+                    className='slider-wrap'
+                    ref={slider}
+                    transition={{duration: 1, type: 'spring', ease: [0.01, 0.95, 0.98, 1]}}
+                    initial={{opacity: 0, x: '100%'}}
+                    animate={sliderInView ? {opacity: 1, x: '0'} : {opacity: 0, x: '100%'}}
+                >
+                    <CasesSlider/>
+                </motion.div>
+            </div>
         </div>
     )
 }
 
 function ReviewSection() {
     const ref = useRef();
-    const isInView = useInView(ref, {once: true});
+    const isInView = useInView(ref, {once: false});
+    const ref2 = useRef();
+    const isInView2 = useInView(ref, {once: false});
     const star = useRef();
-    const starInView = useInView(star, {once: true});
+    const starInView = useInView(star, {once: false});
     const footer1 = useRef();
-    const f1InView = useInView(footer1, {once: true});
+    const f1InView = useInView(footer1, {once: false});
     const footer2 = useRef();
-    const f2InView = useInView(footer2, {once: true});
+    const f2InView = useInView(footer2, {once: false});
 
-    return(
-        <div className='review-wrap flex-column' style={{backgroundImage: `url(${BackImgLower2})`}}>
+    return (
+        <div className='review-wrap flex-column'>
             <div className='review-section container'>
                 <div className='flex-center'>
                     <AnimatedHeading text='ABOUT CEO' inViewOn={true} headingType='h2'/>
@@ -296,12 +309,11 @@ function ReviewSection() {
                 <div className='review-flexbox' style={{gap: '8vw', alignItems: 'center'}}>
                     <div className='star-position'>
                         <motion.img ref={star}
-                            initial={{scale: 0}}
-                            animate={starInView ? {rotate: 90, scale: 1} : {scale: 0}}
-                            transition={{duration: 1, type: 'spring'}}
-                            whileHover={{rotate: -45}}
-                            src={StarImg}
-                            draggable={false}/>
+                                    initial={{scale: 0}}
+                                    animate={starInView ? {rotate: 90, scale: 1} : {scale: 0}}
+                                    transition={{duration: 1, type: 'spring'}}
+                                    src={StarImg}
+                                    draggable={false}/>
                     </div>
                     <div>
                         <div className='review-flexbox' style={{maxWidth: '55rem'}}>
@@ -328,10 +340,10 @@ function ReviewSection() {
                                     part of a productive team.
                                 </motion.h4>
                                 <motion.div
-                                    ref={ref}
-                                    transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                                    ref={ref2}
+                                    transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1], delay: 0.3}}
                                     initial={{y: '100%', opacity: 0}}
-                                    animate={isInView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                                    animate={isInView2 ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
                                     className='flex-row'
                                     style={{gap: '2rem', alignItems: 'center'}}
                                 >
@@ -346,46 +358,106 @@ function ReviewSection() {
                         </div>
                     </div>
                 </div>
+                <div className='review-footer change-font container'>
+                    <motion.p
+                        ref={footer1}
+                        transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                        initial={{y: '100%', opacity: 0}}
+                        animate={f1InView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                        style={{maxWidth: '55rem'}}
+                    >
+                        Dont’t wait any longer, let’s unleash your imagination and create something extraordinary
+                        together
+                    </motion.p>
+                    <motion.div
+                        ref={footer2}
+                        transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                        initial={{y: '100%', opacity: 0}}
+                        animate={f2InView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                    >
+                        <Link to='/contact' className='primary-link'>Catch a glimse!</Link>
+                    </motion.div>
+                </div>
             </div>
-            <div>
-                <ParallaxText baseVelocity={3}>
-                    <div className='flex-row' style={{alignItems: 'center', gap: '2rem'}}>
-                        <h2>UNIXSTUDIO</h2>
-                        <img src={StarDarkImg} draggable={false} style={{width: 72, height: 72}}/>
-                    </div>
-                </ParallaxText>
-                <ParallaxText baseVelocity={-3}>
-                    <div className='flex-row' style={{alignItems: 'center', gap: '2rem', marginTop: 8}}>
-                        <h2>UNIXSTUDIO</h2>
-                        <img src={StarDarkImg} draggable={false} style={{width: 72, height: 72}}/>
-                    </div>
-                </ParallaxText>
-            </div>
-            <div className='review-footer change-font container'>
-                <motion.p
-                    ref={footer1}
-                    transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
-                    initial={{y: '100%', opacity: 0}}
-                    animate={f1InView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
-                    style={{maxWidth: '55rem'}}
-                >
-                    Dont’t wait any longer, let’s unleash your imagination and create something extraordinary together
-                </motion.p>
+        </div>
+    )
+}
+
+function StatsSection() {
+    const ref = useRef();
+    const isInView = useInView(ref, {once: false});
+
+    return (
+        <div className='stats-section container'>
+            <div style={{overflow: 'hidden'}}>
+                <AnimatedHeading headingType='h1' inViewOn={true} text='WE ARE'/>
+                <div>
+
+                </div>
                 <motion.div
-                    ref={footer2}
-                    transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
-                    initial={{y: '100%', opacity: 0}}
-                    animate={f2InView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                    initial={{translateX: -173}}
+                    transition={{duration: 0.5, ease: 'backInOut'}}
+                    animate={isInView ? {translateX: 0} : {translateX: -173}}
+                    style={{display: 'flex', alignItems: 'center', gap: '1rem'}}
                 >
-                    <Link to='/contact' className='primary-link'>Catch a glimse!</Link>
+                    <p className='change-font'>Born in UNIX</p>
+                    <AnimatedHeading headingType='h1' inViewOn={true} text='WORTHY'/>
                 </motion.div>
             </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <motion.div
+                ref={ref}
+
+            />
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }
 
 
 export default function HomePage() {
+    const {scrollYProgress} = useScroll();
+    console.log(scrollYProgress);
     return (
         <div>
             <TitleSection title='UNIXSTUDIO DIGITAL AGENCY' desc=''
@@ -397,9 +469,7 @@ export default function HomePage() {
             <HavenSection/>
             <HomeCases/>
             <ReviewSection/>
-            <div style={{height: '100vh'}}>
-
-            </div>
+            <StatsSection/>
         </div>
     )
 }
