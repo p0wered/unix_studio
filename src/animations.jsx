@@ -16,7 +16,7 @@ const MotionHeading = ({ tag, children, ...props }) => {
     return <Tag {...props}>{children}</Tag>;
 };
 
-export function Separator(){
+export function Separator({dark}){
     const ref = useRef();
     const inView = useInView(ref, { once: false });
 
@@ -27,11 +27,12 @@ export function Separator(){
             initial={{scaleX: 0}}
             animate={inView ? {scaleX: 1} : {scaleX: 0}}
             className='separator'
+            style={dark ? {backgroundColor: 'var(--border-dark)'} : {}}
         />
     )
 }
 
-export function SeparatorWide(){
+export function SeparatorWide({dark}){
     const ref = useRef();
     const inView = useInView(ref, { once: false });
 
@@ -42,7 +43,7 @@ export function SeparatorWide(){
             initial={{scaleX: 0}}
             animate={inView ? {scaleX: 1} : {scaleX: 0}}
             className='separator'
-            style={{margin: 0}}
+            style={dark ? {backgroundColor: 'var(--border-dark)', margin: 0} : {margin: 0}}
         />
     )
 }
@@ -92,22 +93,22 @@ export function AnimatedHeadingWords({ text, inViewOn, headingType }) {
     let letterIndex = 0;
 
     const letterVariants = {
-        hidden: { y: '100%', opacity: 0 },
+        hidden: { y: '50%', opacity: 0 },
         visible: (i) => ({
             y: '0%',
             opacity: 1,
             transition: {
                 duration: 0.5,
-                delay: i * 0.02,
+                delay: i * 0.025,
                 ease: [0.01, 0.97, 0.99, 1],
             },
         }),
     };
 
     return (
-        <div ref={ref} style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div ref={ref} style={{display: 'flex', flexWrap: 'wrap'}}>
             {words.map((word, wordIndex) => (
-                <div key={wordIndex} className="word-container" style={{ display: 'flex', marginRight: '1.5em' }}>
+                <div key={wordIndex} className="word-container" style={{display: 'flex', marginRight: '1.5em', overflow: 'hidden'}}>
                     {word.split('').map((letter, index) => (
                         <div key={`${wordIndex}-${index}`} className="letter-container">
                             <MotionHeading
@@ -116,7 +117,7 @@ export function AnimatedHeadingWords({ text, inViewOn, headingType }) {
                                 animate={isInView ? 'visible' : 'hidden'}
                                 custom={letterIndex++} // Use this counter as the custom delay index
                                 tag={headingType}
-                                style={{ display: 'inline-block' }}
+                                style={{ display: 'inline-block'}}
                             >
                                 {letter}
                             </MotionHeading>

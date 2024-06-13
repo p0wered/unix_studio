@@ -15,7 +15,14 @@ import Vector1 from '../assets/vector.svg';
 import Slider from "react-slick";
 import ReviewSvg from '../assets/review.svg';
 import ReviewImg from '../assets/mask-review.jpg';
-import {AnimatedHeading, AnimatedHeadingWords, ParallaxText, Separator, SeparatorWide} from "../animations";
+import ReviewImg2 from '../assets/mask-review-2.png'
+import {
+    AnimatedHeading,
+    AnimatedHeadingWords,
+    ParallaxText,
+    Separator,
+    SeparatorWide
+} from "../animations";
 import {
     motion,
     useInView, useScroll,
@@ -23,7 +30,7 @@ import {
     useTransform,
 } from "framer-motion";
 import {Link} from "react-router-dom";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {ParallaxBanner, ParallaxBannerLayer, ParallaxProvider} from "react-scroll-parallax";
 
 function TitleSection({title, desc, lowerText}) {
@@ -383,73 +390,211 @@ function ReviewSection() {
     )
 }
 
-function StatsSection() {
+function StatsItem({title, desc, height, hideBorder}){
     const ref = useRef();
     const isInView = useInView(ref, {once: false});
 
     return (
-        <div className='stats-section container'>
-            <div style={{overflow: 'hidden'}}>
-                <AnimatedHeading headingType='h1' inViewOn={true} text='WE ARE'/>
-                <div>
-
-                </div>
-                <motion.div
-                    initial={{translateX: -173}}
-                    transition={{duration: 0.5, ease: 'backInOut'}}
-                    animate={isInView ? {translateX: 0} : {translateX: -173}}
-                    style={{display: 'flex', alignItems: 'center', gap: '1rem'}}
-                >
-                    <p className='change-font'>Born in UNIX</p>
-                    <AnimatedHeading headingType='h1' inViewOn={true} text='WORTHY'/>
-                </motion.div>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <motion.div
+        <div
+            className={hideBorder ? 'stats-item no-border' : 'stats-item'}
+            style={{minHeight: height}}
+        >
+            <motion.p
+                className='change-font'
                 ref={ref}
+                transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                initial={{y: '100%', opacity: 0}}
+                animate={isInView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+            >
+                {title}
+            </motion.p>
+            <motion.h3
+                ref={ref}
+                transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                initial={{y: '100%', opacity: 0}}
+                animate={isInView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+            >
+                {desc}
+            </motion.h3>
+        </div>
+    )
+}
 
-            />
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+function StatsSection() {
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [mobile, setMobile] = useState(window.innerWidth < 992 ? 0 : -173);
+    const ref = useRef();
+    const isInView = useInView(ref, {once: false});
+    const ref2 = useRef();
+    const isInView2 = useInView(ref2, {once: false});
+    const ref3 = useRef();
+    const isInView3 = useInView(ref3, {once: false});
+    const ref5 = useRef();
+    const isInView5 = useInView(ref5, {once: false});
+    const ref6 = useRef();
+    const isInView6 = useInView(ref6, {once: false});
+    const titles = [
+        'People on board',
+        'Years of growth',
+        'Successfully finished projects',
+        'From small team of enthusiasts to one of the best digital agencies',
+        'Design awards',
+        'Monthly visit on E-Commerce we designed'
+    ]
+    const descs = ['60+', '9', '500+', '', '82', '25M']
+
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+            setMobile(window.innerWidth < 992 ? 0 : -173);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return (
+        <div className='stats-section container'>
+            <div>
+                <div style={{overflow: 'hidden'}}>
+                    <AnimatedHeadingWords headingType='h1' inViewOn={true} text='WE ARE'/>
+                    <motion.div
+                        initial={{translateX: mobile}}
+                        transition={{duration: 0.5, ease: 'backInOut'}}
+                        animate={isInView ? {translateX: 0} : {translateX: mobile}}
+                        style={{display: 'flex', alignItems: 'flex-end', gap: '1rem'}}
+                    >
+                        <motion.p
+                            className='change-font stats-desc'
+                            transition={{duration: 0.7}}
+                            style={{marginBottom: 10, minWidth: 120}}
+                            initial={{opacity: 0}}
+                            animate={isInView ? {opacity: 1} : {opacity: 0}}
+                        >
+                            Born in UNIX
+                        </motion.p>
+                        <AnimatedHeadingWords headingType='h1' inViewOn={true} text='WORTHY'/>
+                    </motion.div>
+                </div>
+            </div>
+            <div className='stats-grid' style={{borderTop: '1px solid var(--border-dark)'}}>
+                <div className='stats-item large-stats-item'>
+                    <p></p>
+                    <a className='change-font primary-link'>Get in touch</a>
+                </div>
+                <div className='stats-item no-border' style={{minHeight: 'calc(130px + 10vw)'}}>
+                    <motion.p
+                        className='change-font'
+                        ref={ref}
+                        transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                        initial={{y: '100%', opacity: 0}}
+                        animate={isInView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                    >
+                        Active users on marketplaces we’ve created
+                    </motion.p>
+                    <motion.h3
+                        ref={ref}
+                        transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                        initial={{y: '100%', opacity: 0}}
+                        animate={isInView ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                    >
+                        1M</motion.h3>
+                </div>
+                <div className='stats-item two-cell' style={{minHeight: 'calc(130px + 10vw)'}}>
+                    <motion.p
+                        className='change-font'
+                        ref={ref2}
+                        transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                        initial={{y: '100%', opacity: 0}}
+                        animate={isInView2 ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                    >
+                        Our clients raised owning to our design work
+                    </motion.p>
+                    <motion.h3
+                        ref={ref2}
+                        transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                        initial={{y: '100%', opacity: 0}}
+                        animate={isInView2 ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                    >
+                        $500M
+                    </motion.h3>
+                </div>
+                {
+                    titles.map((title, i) => {
+                        if (i % 2 === 0){
+                            return(
+                                <StatsItem title={title} desc={descs[i]} hideBorder={true}/>
+                            )
+                        } else {
+                            return(
+                                <StatsItem title={title} desc={descs[i]} hideBorder={false}/>
+                            )
+                        }
+                    })
+                }
+            </div>
+            <div className='clients-flexbox'>
+                <div style={{width: 'min-content'}}>
+                    <AnimatedHeading headingType='h1' inViewOn={true} text='OUR CLIENTS'/>
+                </div>
+                <motion.p
+                    ref={ref3}
+                    className='change-font'
+                    transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                    initial={{y: '100%', opacity: 0}}
+                    animate={isInView3 ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                >
+                    ALL AROUND THE GLOBE
+                </motion.p>
+            </div>
+            <div className='reviews-grid'>
+                <div className='placeholder'/>
+                <div className='review-flexbox stats-ed'>
+                    <div>
+                        <div className='review-flexbox' style={{maxWidth: '55rem'}}>
+                            <motion.img
+                                id='review-1'
+                                src={ReviewSvg}
+                                draggable={false}
+                                transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                                initial={{y: '80%', opacity: 0}}
+                                animate={isInView5 ? {y: 0, opacity: 1} : {y: '80%', opacity: 0}}
+                            />
+                            <div className='flex-column' style={{gap: 'calc(32px + 1vw)'}}>
+                                <motion.h4
+                                    ref={ref5}
+                                    className='change-font'
+                                    transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1]}}
+                                    initial={{y: '100%', opacity: 0}}
+                                    animate={isInView5 ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                                >
+                                    I have been hiring people in this space for a number of years and I have never seen
+                                    this level of professionalism. It really feels like you are working with a team that
+                                    can get the job done.
+                                </motion.h4>
+                                <motion.div
+                                    ref={ref6}
+                                    transition={{duration: 0.7, ease: [0.01, 0.95, 0.98, 1], delay: 0.3}}
+                                    initial={{y: '100%', opacity: 0}}
+                                    animate={isInView6 ? {y: 0, opacity: 1} : {y: '100%', opacity: 0}}
+                                    className='flex-row'
+                                    style={{gap: '2rem', alignItems: 'center'}}
+                                >
+                                    <img
+                                        className='stats-review-img'
+                                        src={ReviewImg2}
+                                        draggable={false}/>
+                                    <div>
+                                        <p>PETER VISSER</p>
+                                        <p className='change-font' style={{color: '#808080', fontSize: 16}}>VISSER CONSULTING</p>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
