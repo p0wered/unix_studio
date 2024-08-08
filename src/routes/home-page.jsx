@@ -25,7 +25,7 @@ import {
 } from "../animations";
 import {
     motion,
-    useInView, useScroll,
+    useInView,
     useTime,
     useTransform,
 } from "framer-motion";
@@ -33,7 +33,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 import {ParallaxBanner, ParallaxBannerLayer, ParallaxProvider} from "react-scroll-parallax";
 
-function TitleSection({title, desc, lowerText}) {
+function TitleSection() {
     const time = useTime();
     const rotate = useTransform(time, [0, 12000], [0, 360], {clamp: false});
     return (
@@ -41,11 +41,10 @@ function TitleSection({title, desc, lowerText}) {
             <div className='title-section container' style={{backgroundImage: `url(${BackgroundImg})`}}>
                 <div className='inner'>
                     <AnimatedHeadingWords
-                        text={title}
+                        text='UNIXSTUDIO DIGITAL AGENCY'
                         inViewOn={false}
                         headingType='h1'
                     />
-                    <p>{desc}</p>
                     <div className='star-position'>
                         <motion.img
                             initial={{scale: 0}}
@@ -62,7 +61,8 @@ function TitleSection({title, desc, lowerText}) {
                               animate={{y: 0, opacity: 1}}
                     >
 
-                        {lowerText}
+                        We won 50+ design awards in 2022 stand alone, some of which had us share the stage with
+                        Google, Netflix, and Spotify
                     </motion.p>
                     <div>
                         <Link to='/contact'>
@@ -89,7 +89,7 @@ function ToAboutSection() {
     return (
         <div>
             <Separator/>
-            <img src={Vector1} id='vector1' draggable={false}/>
+            <img src={Vector1} id='vector1' draggable={false} alt='vector1'/>
             <div className='to-about-section container'>
                 <div className='flex-column' style={{maxWidth: '55rem', gap: '2rem'}}>
                     <AnimatedHeading
@@ -125,10 +125,10 @@ const ServiceItem = ({title}) => {
     return (
         <div>
             <Link to='/error' className='item'>
-                <div className='item-title' style={{ maxWidth: '55rem' }}>
+                <div className='item-title' style={{maxWidth: '55rem'}}>
                     <AnimatedHeading text={title} inViewOn={true} headingType='h3' />
                 </div>
-                <img src={ArrowButton}/>
+                <img src={ArrowButton} alt='Arrow Button'/>
             </Link>
             <SeparatorWide/>
         </div>
@@ -237,7 +237,7 @@ function CasesSlider() {
                 {
                     titles.map((title, i) => (
                         <div className='h-item' key={title}>
-                            <img src={images[i]}/>
+                            <img src={images[i]} alt={`image ${i}`}/>
                             <div className='merger'>
                                 <a href='#' className='primary-link' style={{fontSize: 24}}>{title}</a>
                                 <p className='change-font'>{subjects[i]}</p>
@@ -601,14 +601,9 @@ function StatsSection() {
 
 
 export default function HomePage() {
-    const {scrollYProgress} = useScroll();
-    console.log(scrollYProgress);
     return (
         <div>
-            <TitleSection title='UNIXSTUDIO DIGITAL AGENCY' desc=''
-                          lowerText='We won 50+ design awards in 2022 stand alone, some of which had us share the stage
-                          with Google, Netflix, and Spotify'
-            />
+            <TitleSection/>
             <ToAboutSection/>
             <HomeServices/>
             <HavenSection/>

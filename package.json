@@ -1,6 +1,6 @@
 {
   "name": "unix_studio",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": true,
   "dependencies": {
     "@motionone/utils": "^10.18.0",
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "hamburger-react": "^2.5.1"
   }
 }

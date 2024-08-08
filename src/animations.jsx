@@ -11,9 +11,9 @@ import {
 import { wrap } from "@motionone/utils";
 import {useRef} from "react";
 
-const MotionHeading = ({ tag, children, ...props }) => {
+const MotionHeading = ({ tag, children, className, ...props }) => {
     const Tag = motion[tag];
-    return <Tag {...props}>{children}</Tag>;
+    return <Tag className={className} {...props}>{children}</Tag>;
 };
 
 export function Separator({dark}){
@@ -85,7 +85,7 @@ export function AnimatedHeading({text, inViewOn, headingType}) {
     );
 }
 
-export function AnimatedHeadingWords({ text, inViewOn, headingType }) {
+export function AnimatedHeadingWords({text, inViewOn, headingType, className}) {
     const words = text.split(' ');
     const ref = useRef();
     const inView = useInView(ref, { once: false });
@@ -115,9 +115,10 @@ export function AnimatedHeadingWords({ text, inViewOn, headingType }) {
                                 variants={letterVariants}
                                 initial="hidden"
                                 animate={isInView ? 'visible' : 'hidden'}
-                                custom={letterIndex++} // Use this counter as the custom delay index
+                                custom={letterIndex++}
                                 tag={headingType}
                                 style={{ display: 'inline-block'}}
+                                className={className}
                             >
                                 {letter}
                             </MotionHeading>

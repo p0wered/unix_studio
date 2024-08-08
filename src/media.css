@@ -112,6 +112,9 @@
     h1{
         font-size: calc(12px + 6vw);
     }
+    nav{
+        padding: 0.5rem 6vw;
+    }
     nav .links{
         display: none;
     }
@@ -148,6 +151,9 @@
     }
     .footer-bg{
         height: 200px;
+    }
+    .mobile-menu{
+        display: flex;
     }
 }
 
