@@ -184,7 +184,7 @@ textarea:focus, input:focus{
 }
 
 .border-text{
-  color: #131313;
+  color: var(--content-dark);
   margin-bottom: 3px;
   -webkit-text-stroke: 1px #bdbdbd;
 }
@@ -704,5 +704,5 @@ footer{
   height: 220px;
   border-radius: 50%;
   border: 1px solid #bdbdbd;
-  background-color: #131313;
+  background-color: var(--content-dark);
 }

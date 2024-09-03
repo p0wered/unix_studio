@@ -38,7 +38,7 @@ function TitleSection() {
     const rotate = useTransform(time, [0, 12000], [0, 360], {clamp: false});
     return (
         <div>
-            <div className='title-section container' style={{backgroundImage: `url(${BackgroundImg})`}}>
+            <motion.div className='title-section container' style={{backgroundImage: `url(${BackgroundImg})`}}>
                 <div className='inner'>
                     <AnimatedHeadingWords
                         text='UNIXSTUDIO DIGITAL AGENCY'
@@ -77,7 +77,7 @@ function TitleSection() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }
@@ -136,6 +136,14 @@ const ServiceItem = ({title}) => {
 };
 
 function HomeServices(){
+    const linkTitles = {
+        "HOME": "/",
+        "CASES": "/cases",
+        "SERVICES": "/services",
+        "ABOUT": "/about",
+        "CONTACT": "/contact",
+    }
+
     const serviceTitles= [
         'Marketing and Communication Plan',
         'Branding',

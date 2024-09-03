@@ -245,7 +245,7 @@ function App() {
                 <Route path='/about' element={<AboutPage/>}/>
                 <Route path='/cases' element={<CasePage/>}/>
             </Routes>
-          <Footer/>
+            <Footer/>
       </BrowserRouter>
   );
 }

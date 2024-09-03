@@ -96,6 +96,40 @@ function TitleSection() {
     )
 }
 
+function CasesSection(){
+    const container = {
+        hidden: {y: '-100%', opacity: 0.5},
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                delayChildren: 0.15,
+                staggerChildren: 0.06,
+                ease: [0.01, 0.95, 0.98, 1]
+            }
+        }
+    }
+
+    const mobileLink = {
+        hidden: {y: '-100%', opacity: 0},
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                ease: [0.01, 0.95, 0.98, 1],
+            }
+        },
+    }
+
+    return(
+        <div>
+            <div>
+
+            </div>
+        </div>
+    )
+}
+
 export default function CasePage(){
     return(
         <div>
