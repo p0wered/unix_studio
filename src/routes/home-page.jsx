@@ -29,9 +29,10 @@ import {
     useTime,
     useTransform,
 } from "framer-motion";
-import {Link} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
+import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {ParallaxBanner, ParallaxBannerLayer, ParallaxProvider} from "react-scroll-parallax";
+import {Footer} from "../App";
 
 function TitleSection() {
     const time = useTime();
@@ -609,6 +610,12 @@ function StatsSection() {
 
 
 export default function HomePage() {
+    const {pathname} = useLocation();
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
         <div>
             <TitleSection/>
@@ -618,6 +625,7 @@ export default function HomePage() {
             <HomeCases/>
             <ReviewSection/>
             <StatsSection/>
+            <Footer/>
         </div>
     )
 }

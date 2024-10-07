@@ -19,8 +19,8 @@ function NavBar(){
     const linkTitles = {
         "HOME": "/",
         "CASES": "/cases",
-        "SERVICES": "/services",
         "ABOUT": "/about",
+        "SERVICES": "/services",
         "CONTACT": "/contact",
     }
 
@@ -57,8 +57,8 @@ function NavBar(){
                 <div className='links change-font'>
                     <NavLink className='primary-link' to='/'>HOME</NavLink>
                     <NavLink className='primary-link' to='/cases'>CASES</NavLink>
-                    <NavLink className='primary-link' to='/services'>SERVICES</NavLink>
                     <NavLink className='primary-link' to='/about'>ABOUT</NavLink>
+                    <NavLink className='primary-link' to='/services'>SERVICES</NavLink>
                     <NavLink className='primary-link' to='/contact'>CONTACT</NavLink>
                 </div>
                 <div className='menu-icon'>
@@ -89,7 +89,7 @@ function NavBar(){
     )
 }
 
-function Footer() {
+export function Footer() {
     const linksRef = useRef();
     const locationRef = useRef();
     const emailRef = useRef();
@@ -245,7 +245,6 @@ function App() {
                 <Route path='/about' element={<AboutPage/>}/>
                 <Route path='/cases' element={<CasePage/>}/>
             </Routes>
-            <Footer/>
       </BrowserRouter>
   );
 }

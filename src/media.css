@@ -106,6 +106,19 @@
     .footer-container{
         width: 100%;
     }
+    .cases-circle-row{
+        margin-top: 8px;
+    }
+    .cases-circle{
+        width: 132px;
+        height: 132px;
+    }
+    .cases-circle div{
+        width: 100px;
+    }
+    .cases-circle div p{
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 720px) {
