@@ -141,6 +141,12 @@ function CasesSection(){
     const isInView2 = useInView(ref2, {once: false});
     const ref3 = useRef();
     const isInView3 = useInView(ref3, {once: false});
+    const ref4 = useRef();
+    const isInView4 = useInView(ref4, {once: false});
+    const ref5 = useRef();
+    const isInView5 = useInView(ref5, {once: false});
+    const ref6 = useRef();
+    const isInView6 = useInView(ref6, {once: false});
 
     return(
         <section className='cases-section container'>
@@ -157,7 +163,7 @@ function CasesSection(){
                                 color: 'var(--content-dark)'
                             }}
                         >
-                            <Link to='/contact' className='cases-button change-font'>
+                            <Link to='/cases' className='cases-button change-font'>
                                 <p>{title}</p>
                             </Link>
                         </motion.div>
@@ -181,7 +187,7 @@ function CasesSection(){
                         </p>
                     </motion.div>
                 </div>
-                <div className='cases-grid-item' style={{borderRight: '1px solid var(--border-dark)'}}>
+                <div className='cases-grid-item cases-right-border'>
                     <motion.div
                         ref={ref}
                         transition={{duration: 1, ease: [0.01, 0.95, 0.98, 1]}}
@@ -202,9 +208,10 @@ function CasesSection(){
                 </div>
                 <div className='cases-grid-item'>
                     <motion.div
+                        ref={ref4}
                         transition={{duration: 1, ease: [0.01, 0.95, 0.98, 1]}}
                         initial={{opacity: 0}}
-                        animate={isInView ? {opacity: 1} : {opacity: 0}}
+                        animate={isInView4 ? {opacity: 1} : {opacity: 0}}
                     >
                         <div style={{display: 'flex', alignItems: 'center', gap: 5, flexDirection: 'row'}}>
                             <p>BALLIAT</p>
@@ -218,8 +225,7 @@ function CasesSection(){
                         <img src={Case2} alt=""/>
                     </motion.div>
                 </div>
-
-                <div className='cases-grid-item' style={{borderRight: '1px solid var(--border-dark)'}}>
+                <div className='cases-grid-item cases-right-border'>
                     <motion.div
                         ref={ref2}
                         transition={{duration: 1, ease: [0.01, 0.95, 0.98, 1]}}
@@ -241,9 +247,10 @@ function CasesSection(){
                 </div>
                 <div className='cases-grid-item'>
                     <motion.div
+                        ref={ref5}
                         transition={{duration: 1, ease: [0.01, 0.95, 0.98, 1]}}
                         initial={{opacity: 0}}
-                        animate={isInView2 ? {opacity: 1} : {opacity: 0}}
+                        animate={isInView5 ? {opacity: 1} : {opacity: 0}}
                     >
                         <div style={{display: 'flex', alignItems: 'center', gap: 5, flexDirection: 'row'}}>
                             <p>ELEKTRA</p>
@@ -257,8 +264,7 @@ function CasesSection(){
                         <img src={Case1} alt=""/>
                     </motion.div>
                 </div>
-
-                <div className='cases-grid-item' style={{borderRight: '1px solid var(--border-dark)'}}>
+                <div className='cases-grid-item cases-right-border'>
                     <motion.div
                         ref={ref3}
                         transition={{duration: 1, ease: [0.01, 0.95, 0.98, 1]}}
@@ -279,9 +285,10 @@ function CasesSection(){
                 </div>
                 <div className='cases-grid-item'>
                     <motion.div
+                        ref={ref6}
                         transition={{duration: 1, ease: [0.01, 0.95, 0.98, 1]}}
                         initial={{opacity: 0}}
-                        animate={isInView3 ? {opacity: 1} : {opacity: 0}}
+                        animate={isInView6 ? {opacity: 1} : {opacity: 0}}
                     >
                         <div style={{display: 'flex', alignItems: 'center', gap: 5, flexDirection: 'row'}}>
                             <p>ELEKTRA</p>
@@ -295,6 +302,9 @@ function CasesSection(){
                         <img src={Case1} alt=""/>
                     </motion.div>
                 </div>
+            </div>
+            <div className='flex-center' style={{marginTop: '2rem'}}>
+                <a className='primary-link' style={{color: 'var(--content-light)'}} href="#">VIEW ALL CASES</a>
             </div>
         </section>
     )
